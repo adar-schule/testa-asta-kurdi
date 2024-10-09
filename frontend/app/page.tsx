@@ -11,8 +11,8 @@ export default function HomePage() {
 
   // Fetch data from backend
   useEffect(() => {
-    const backendUrl = process.env.NEXT_PUBLIC_BE_URL;  // This will be something like "https://testa-asta-kurdi.herokuapp.com"
-    fetch(`${backendUrl}/welcome`)  // Use /api since backend routes are prefixed with /api
+    const backendUrl = process.env.NEXT_PUBLIC_BE_URL || window.location.origin;
+    fetch(`${backendUrl}/welcome`)
       .then((response) => response.json())
       .then((data) => setMessage(data.message))
       .catch((error) => {
@@ -20,6 +20,7 @@ export default function HomePage() {
         setMessage('Failed to load message');
       });
   }, []);
+
   const handleStartTest = () => {
     router.push('/test/start'); // Navigate to the user info form page first
   };
