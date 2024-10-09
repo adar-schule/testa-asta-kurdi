@@ -11,8 +11,12 @@ export default function HomePage() {
 
   // Fetch data from backend
   useEffect(() => {
-    const backendUrl = process.env.NEXT_PUBLIC_BE_URL || '';
-    fetch(`${backendUrl}/api/welcome`)  // Use /api as global prefix for backend routes
+    const backendUrl =
+      process.env.NODE_ENV === 'production'
+        ? '/api' // In production, use the same port (relative path)
+        : process.env.NEXT_PUBLIC_BE_URL || 'http://localhost:5001/api'; // Local development
+
+    fetch(`${backendUrl}/welcome`)
       .then((response) => response.json())
       .then((data) => setMessage(data.message))
       .catch((error) => {
