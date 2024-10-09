@@ -11,8 +11,8 @@ export default function HomePage() {
 
   // Fetch data from backend
   useEffect(() => {
-    const backendUrl = process.env.NEXT_PUBLIC_BE_URL || window.location.origin;
-    fetch(`${backendUrl}/welcome`)
+    const backendUrl = process.env.NEXT_PUBLIC_BE_URL || '';
+    fetch(`${backendUrl}/api/welcome`)  // Use /api as global prefix for backend routes
       .then((response) => response.json())
       .then((data) => setMessage(data.message))
       .catch((error) => {
