@@ -3,20 +3,25 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
-        "start": "npm run start:frontend & npm run start:backend",
-        "start:frontend": "cd frontend && npm start",
-        "start:backend": "cd backend && npm start",
+        "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+        "dev:frontend": "cd frontend && npm run dev",
+        "dev:backend": "cd backend && npm run start:dev",
+        "start": "npm run build && npm run serve",
+        "serve": "concurrently \"npm run serve:frontend\" \"npm run serve:backend\"",
+        "serve:frontend": "cd frontend && npm run start",
+        "serve:backend": "cd backend && npm run start",
         "build": "npm run build:frontend && npm run build:backend",
         "build:frontend": "cd frontend && npm run build",
-        "build:backend": "cd backend && npm run build",
-        "dev": "npm run dev:frontend & npm run dev:backend",
-        "dev:frontend": "cd frontend && npm run dev",
-        "dev:backend": "cd backend && npm run start:dev"
+        "build:backend": "cd backend && npm run build"
     },
     "workspaces": [
         "frontend",
         "backend"
     ],
+    "dependencies": {
+        "@nestjs/config": "^3.2.3",
+        "concurrently": "^6.0.0"
+    },
     "devDependencies": {
         "@next/swc-darwin-arm64": "^14.2.15",
         "@typescript-eslint/eslint-plugin": "^6.0.0",
@@ -26,8 +31,5 @@
         "eslint-plugin-prettier": "^5.0.0",
         "prettier": "^3.0.0",
         "typescript": "^5.6.2"
-    },
-    "dependencies": {
-        "@nestjs/config": "^3.2.3"
     }
 }
