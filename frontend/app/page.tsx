@@ -6,12 +6,13 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function HomePage() {
-  const [message, setMessage] = useState('Loading...');
+  const [headingMessage, setMessage] = useState('Loading...');
   const router = useRouter();
 
   // Fetch data from backend
   useEffect(() => {
-    fetch('http://localhost:5001/welcome')
+    const backendPort = process.env.NEXT_PUBLIC_BE_PORT;
+    fetch(`http://localhost:${backendPort}/welcome`)
       .then((response) => response.json())
       .then((data) => setMessage(data.message))
       .catch((error) => {
@@ -26,7 +27,7 @@ export default function HomePage() {
 
   return (
     <Box textAlign="center" py={10} px={6}>
-      <Heading>{message}</Heading>
+      <Heading>{headingMessage}</Heading>
       <Text mt={6}>
         This test is designed to evaluate your Kurdish language proficiency across various aspects.
       </Text>
