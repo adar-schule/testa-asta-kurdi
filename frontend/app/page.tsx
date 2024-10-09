@@ -1,12 +1,24 @@
 // frontend/app/page.tsx
-
 "use client";
 
 import { Box, Heading, Text, Button } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function HomePage() {
+  const [message, setMessage] = useState('Loading...');
   const router = useRouter();
+
+  // Fetch data from backend
+  useEffect(() => {
+    fetch('http://localhost:5001/welcome')
+      .then((response) => response.json())
+      .then((data) => setMessage(data.message))
+      .catch((error) => {
+        console.error('Error fetching message:', error);
+        setMessage('Failed to load message');
+      });
+  }, []);
 
   const handleStartTest = () => {
     router.push('/test/start'); // Navigate to the user info form page first
@@ -14,7 +26,7 @@ export default function HomePage() {
 
   return (
     <Box textAlign="center" py={10} px={6}>
-      <Heading>Testa Asta Kurdî</Heading>
+      <Heading>{message}</Heading>
       <Text mt={6}>
         This test is designed to evaluate your Kurdish language proficiency across various aspects.
       </Text>
