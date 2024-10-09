@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
-        "install": "node ./install-platform-specific-swc.js && npm install",
+        "install": "node ./install-swc.js",
         "dev": "npm run dev:frontend & npm run dev:backend",
         "dev:frontend": "cd frontend && npm run dev",
         "dev:backend": "cd backend && npm run start:dev",
