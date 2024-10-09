@@ -2,7 +2,7 @@
   "compilerOptions": {
     "module": "esnext",
     "target": "es5",
-    "jsx": "preserve",
+    "jsx": "preserve", // Correct for Next.js projects.
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "esModuleInterop": true,
@@ -15,9 +15,9 @@
       ]
     },
     "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
+      "dom", // Required for DOM elements like window, document, etc.
+      "dom.iterable", // Enables iterables in the DOM.
+      "esnext" // Support latest ECMAScript features.
     ],
     "allowJs": true,
     "noEmit": true,

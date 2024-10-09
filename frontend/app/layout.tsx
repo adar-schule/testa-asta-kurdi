@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar';
 import './globals.css';
 
 export const metadata = {
-  title: 'Kurdish Language Proficiency Test',
+  title: 'Testa Asta Kurdî',
   description: 'Assess your Kurdish language proficiency skills',
 };
 

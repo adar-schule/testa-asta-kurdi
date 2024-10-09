@@ -14,12 +14,12 @@ export default function HomePage() {
 
   return (
     <Box textAlign="center" py={10} px={6}>
-      <Heading>Kurdish Language Proficiency Test</Heading>
+      <Heading>Testa Asta Kurdî</Heading>
       <Text mt={6}>
         This test is designed to evaluate your Kurdish language proficiency across various aspects.
       </Text>
       <Button mt={6} colorScheme="teal" size="lg" onClick={handleStartTest}>
-        Start Kurdish Level Test
+        Start Kurdî Level Test
       </Button>
     </Box>
   );

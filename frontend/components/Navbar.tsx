@@ -6,13 +6,13 @@ export default function Navbar() {
     return (
         <Box bg="gray.800" color="white" px={4}>
             <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-                <Box>Kurdish Test</Box>
+                <Box>Testa Asta Kurdî</Box>
                 <Flex alignItems={'center'}>
                     <NextLink href="/" passHref>
-                        <Text mx={4} cursor="pointer">Home</Text>
+                        <Text mx={4} cursor="pointer">Malpar | Home</Text>
                     </NextLink>
                     <NextLink href="/test" passHref>
-                        <Text mx={4} cursor="pointer">Take Test</Text>
+                        <Text mx={4} cursor="pointer">Take Test | Testê bikin</Text>
                     </NextLink>
                 </Flex>
             </Flex>
