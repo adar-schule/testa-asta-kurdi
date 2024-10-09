@@ -3,7 +3,6 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
-        "install": "node ./install-swc.js",
         "dev": "npm run dev:frontend & npm run dev:backend",
         "dev:frontend": "cd frontend && npm run dev",
         "dev:backend": "cd backend && npm run start:dev",
@@ -14,13 +13,14 @@
         "build:frontend": "cd frontend && npm run build",
         "build:backend": "cd backend && npm run build"
     },
+    "optionalDependencies": {
+        "@next/swc-darwin-arm64": "14.2.15",
+        "@next/swc-linux-x64": "14.2.15"
+    },
     "workspaces": [
         "frontend",
         "backend"
     ],
-    "engines": {
-        "node": "20.x"
-    },
     "dependencies": {
         "@nestjs/config": "^3.2.3",
         "concurrently": "^6.0.0"
