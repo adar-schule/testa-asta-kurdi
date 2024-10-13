@@ -1,19 +1,24 @@
 {
-    "name": "testa-asta-kurdi",
-    "version": "1.0.0",
-    "private": true,
-    "scripts": {
-    },
-    "optionalDependencies": {
-        "@next/swc-darwin-arm64": "14.2.15",
-        "@next/swc-linux-x64": "14.2.15"
-    },
-    "workspaces": [
-        "frontend",
-        "backend"
-    ],
-    "dependencies": {
-    },
-    "devDependencies": {
-    }
+  "name": "testa-asta-kurdi",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:backend": "npm --prefix backend run start:dev",
+    "build": "npm run build:frontend && npm run build:backend",
+    "build:frontend": "npm --prefix frontend run build",
+    "build:backend": "npm --prefix backend run build"
+  },
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "optionalDependencies": {
+    "@next/swc-darwin-arm64": "14.2.15",
+    "@next/swc-linux-x64": "14.2.15"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0"
+  }
 }
