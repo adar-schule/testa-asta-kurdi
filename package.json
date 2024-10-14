@@ -14,10 +14,6 @@
     "frontend",
     "backend"
   ],
-  "optionalDependencies": {
-    "@next/swc-darwin-arm64": "14.2.15",
-    "@next/swc-linux-x64": "14.2.15"
-  },
   "devDependencies": {
     "concurrently": "^7.0.0"
   }
