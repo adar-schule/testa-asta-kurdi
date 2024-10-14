@@ -1,8 +1,10 @@
-"use client"; // Ensure this is a client-side component
-
+import { Box, Heading, Text, Button, VStack, Center, Icon, HStack } from "@chakra-ui/react";
+import { InfoIcon } from "@chakra-ui/icons";
+import { useRouter } from "next/router";
 import { useEffect, useState } from 'react';
 
-export default function Home() {
+const HomePage = () => {
+  const router = useRouter();
   const [message, setMessage] = useState(''); // State to hold backend response
 
   // Use useEffect to call the backend when the component mounts
@@ -30,9 +32,56 @@ export default function Home() {
     fetchData();
   }, []);
 
+
+  const handleStartTest = () => {
+    // Navigate to the assessment form page
+    router.push("/assessment/form");
+  };
+
   return (
-    <div>
-      <h1>{message || 'Loading...'}</h1> {/* Display the backend message as a heading */}
-    </div>
+    <Center minH="100vh" bg="gray.50" px={4}>
+      <VStack spacing={6} maxW="600px" w="full" textAlign="center">
+        <Heading size="2xl" mb={4}>
+          {message || 'Loading...'}
+        </Heading>
+        <Text fontSize="xl" color="gray.600">
+          Assess your Kurdish language skills with our comprehensive proficiency test.
+        </Text>
+
+        <Box
+          borderRadius="md"
+          p={4}
+          bg="white"
+          shadow="md"
+          w="full"
+          textAlign="left"
+        >
+          <HStack spacing={3}>
+            <Icon as={InfoIcon} w={6} h={6} color="blue.500" />
+            <Text fontWeight="bold">About the Test</Text>
+          </HStack>
+          <Text mt={2} color="gray.700">
+            This test is designed to evaluate your Kurdish language proficiency across various
+            aspects, including vocabulary, grammar, and comprehension. The test consists of
+            multiple-choice questions and will take approximately 30 minutes to complete.
+          </Text>
+          <Text mt={2} color="gray.700">
+            Upon completion, you’ll receive a detailed assessment of your Kurdish language skills,
+            including your proficiency level and areas for improvement.
+          </Text>
+        </Box>
+
+        <Button
+          onClick={handleStartTest}
+          colorScheme="teal"
+          size="lg"
+          mt={4}
+        >
+          Start Kurdish Level Test
+        </Button>
+      </VStack>
+    </Center>
   );
-}
+};
+
+export default HomePage;
