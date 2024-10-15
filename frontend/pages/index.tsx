@@ -1,3 +1,4 @@
+// /frontend/pages/index.tsx
 import {
   Box,
   Heading,
@@ -106,10 +107,7 @@ const HomePage = () => {
           <Button
             onClick={handleStartTest}
             colorScheme="teal"
-            size="lg"
-            mt={8}
-            shadow="md"
-            _hover={{ bg: "teal.400" }}
+            size="md"
           >
             Start Kurdish Level Test
           </Button>

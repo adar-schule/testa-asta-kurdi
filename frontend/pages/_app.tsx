@@ -1,11 +1,12 @@
+// /frontend/pages/_app.tsx
 import { ChakraProvider, extendTheme, theme as defaultTheme } from "@chakra-ui/react";
-import type { Metadata } from "next";
+import type { AppProps } from "next/app";
 
 // Define your custom theme and merge it with the default Chakra theme
 const customTheme = extendTheme({
-  ...defaultTheme, // Include default theme colors
+  ...defaultTheme, // Ensure default colors (like teal) are included
   colors: {
-    ...defaultTheme.colors, // Ensure default colors (like teal) are included
+    ...defaultTheme.colors, // Include default colors like teal
     primary: {
       100: "#E3F8FF",
       200: "#B3ECFF",
@@ -20,21 +21,12 @@ const customTheme = extendTheme({
   },
 });
 
-export const metadata: Metadata = {
-  title: "Testa Asta Kurdi",
-  description: "Adar Schule",
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={customTheme}>
-      <html lang="en">
-        <body>{children}</body>
-      </html>
+      <Component {...pageProps} />
     </ChakraProvider>
   );
 }
+
+export default MyApp;
