@@ -12,12 +12,14 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { useUser } from "../../context/UserContext";  // Import the useUser hook
 
 const UserForm = () => {
-  const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const { user, setUser } = useUser();  // Access user data from context
+  const [name, setName] = useState(user.name);
+  const [surname, setSurname] = useState(user.surname);
+  const [email, setEmail] = useState(user.email);
+  const [phone, setPhone] = useState(user.phone);
   const toast = useToast();
   const router = useRouter();
 
@@ -37,15 +39,13 @@ const UserForm = () => {
       return;
     }
 
-    // Simulate backend call with the collected data
-    const userData = {
+    // Update the context with the user's data
+    setUser({
       name,
       surname,
       email,
       phone,
-    };
-
-    console.log("Submitted User Data:", userData);
+    });
 
     // Display success message
     toast({
@@ -56,19 +56,13 @@ const UserForm = () => {
       isClosable: true,
     });
 
-    // Clear form fields
-    setName("");
-    setSurname("");
-    setEmail("");
-    setPhone("");
-
     // Proceed to test page
-    router.push("/assessment/test");
+    router.push("/assessment/questions");
   };
 
   // Skip form validation and go directly to the test
   const handleSkip = () => {
-    router.push("/assessment/test");
+    router.push("/assessment/questions");
   };
 
   return (

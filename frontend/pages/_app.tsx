@@ -1,4 +1,6 @@
 // /frontend/pages/_app.tsx
+import { UserProvider } from "@/context/UserContext";
+import { AssessmentProvider } from "@/context/AssessmentContext"; // Import Assessment Context
 import { ChakraProvider, extendTheme, theme as defaultTheme } from "@chakra-ui/react";
 import type { AppProps } from "next/app";
 
@@ -21,12 +23,16 @@ const customTheme = extendTheme({
   },
 });
 
-function MyApp({ Component, pageProps }: AppProps) {
+function TestaAstaKurdiApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={customTheme}>
-      <Component {...pageProps} />
+      <UserProvider>
+        <AssessmentProvider>
+          <Component {...pageProps} />
+        </AssessmentProvider>
+      </UserProvider>
     </ChakraProvider>
   );
 }
 
-export default MyApp;
+export default TestaAstaKurdiApp;
