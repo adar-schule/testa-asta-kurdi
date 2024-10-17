@@ -28,7 +28,7 @@ const AssessmentFormPage = () => {
                             Assessment Form
                         </Heading>
                         <Text fontSize="xl" color="whiteAlpha.800">
-                            Please provide your information and proficiency level to begin the assessment.
+                            You can either continue without providing your information or proceed with your data.
                         </Text>
                     </Box>
 
