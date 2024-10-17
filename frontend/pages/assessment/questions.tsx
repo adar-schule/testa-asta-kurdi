@@ -1,6 +1,6 @@
 // /frontend/pages/assessment/questions.tsx
 import React, { useState } from 'react';
-import { Box, VStack, Button, Center } from '@chakra-ui/react';
+import { Box, VStack, Button, Center, HStack } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useUser } from '../../context/UserContext';
 import { questionsDummyData } from '@/utils/dummyQuestions';
@@ -50,28 +50,30 @@ const AssessmentQuestionsPage = () => {
             <Center minH="100vh" bg="gray.50" px={4} pt="80px"> {/* Added padding-top to account for navbar height */}
                 <Box w="full" maxW="600px" mx="auto" textAlign="center">
                     <VStack spacing={6}>
-                        {currentQuestion.type === 'multiselect' ? (
-                            <QuestionMultiselect
-                                question={currentQuestion}
-                                onAnswerChange={handleAnswerChange}
-                                currentAnswer={answers[currentQuestion.id] || ""}
-                            />
-                        ) : (
-                            <QuestionFillInput
-                                question={currentQuestion}
-                                onAnswerChange={handleAnswerChange}
-                                currentAnswer={answers[currentQuestion.id] || ""}
-                            />
-                        )}
+                        <Box minH="200px" w="full"> {/* Ensure consistent height for questions */}
+                            {currentQuestion.type === 'multiselect' ? (
+                                <QuestionMultiselect
+                                    question={currentQuestion}
+                                    onAnswerChange={handleAnswerChange}
+                                    currentAnswer={answers[currentQuestion.id] || ""}
+                                />
+                            ) : (
+                                <QuestionFillInput
+                                    question={currentQuestion}
+                                    onAnswerChange={handleAnswerChange}
+                                    currentAnswer={answers[currentQuestion.id] || ""}
+                                />
+                            )}
+                        </Box>
 
-                        <VStack spacing={4}>
+                        <HStack spacing={4} justify="center" mt={4} w="full"> {/* Buttons aligned horizontally */}
                             <Button onClick={handleBack} colorScheme="gray" isDisabled={currentQuestionIndex === 0}>
                                 Back
                             </Button>
                             <Button onClick={handleNext} colorScheme="teal">
                                 {currentQuestionIndex === questionsDummyData.length - 1 ? 'Submit' : 'Next'}
                             </Button>
-                        </VStack>
+                        </HStack>
                     </VStack>
                 </Box>
             </Center>
