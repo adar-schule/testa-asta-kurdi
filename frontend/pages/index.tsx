@@ -47,7 +47,7 @@ const HomePage = () => {
 
   return (
     <Center minH="100vh" bg="gray.50" px={4}>
-      <Box w="full" maxW="600px" mx="auto" px={4} textAlign="center"> {/* Ensure centering */}
+      <Box w="full" maxW="600px" mx="auto" px={4} textAlign="center">
         <VStack spacing={6} w="full">
           <Box
             w="100%"
@@ -79,6 +79,7 @@ const HomePage = () => {
             objectFit="cover"  // Maintain aspect ratio
           />
 
+          {/* About the test section */}
           <Box
             borderRadius="md"
             p={6}
@@ -86,10 +87,11 @@ const HomePage = () => {
             shadow="md"
             w="full"
             textAlign="left"
+            maxW="800px"  // Increased width for better visibility
           >
-            <HStack spacing={3}>
-              <Icon as={InfoIcon} w={6} h={6} color="teal.500" />
-              <Text fontWeight="bold" fontSize="xl">
+            <HStack spacing={3} alignItems="flex-start">
+              <Icon as={InfoIcon} w={8} h={8} color="teal.500" />  {/* Increased size for better visual impact */}
+              <Text fontWeight="bold" fontSize="2xl">
                 About the Test
               </Text>
             </HStack>
@@ -107,7 +109,10 @@ const HomePage = () => {
           <Button
             onClick={handleStartTest}
             colorScheme="teal"
-            size="md"
+            size="lg"  // Increased button size
+            mt={4}  // Add some margin to bring the button higher up
+            w="full"  // Full-width button for better visibility
+            maxW="400px"  // Limit the width so it doesn’t stretch too much
           >
             Start Kurdish Level Test
           </Button>

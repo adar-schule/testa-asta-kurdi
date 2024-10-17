@@ -1,8 +1,9 @@
 // /frontend/pages/_app.tsx
 import { UserProvider } from "@/context/UserContext";
 import { AssessmentProvider } from "@/context/AssessmentContext"; // Import Assessment Context
-import { ChakraProvider, extendTheme, theme as defaultTheme } from "@chakra-ui/react";
+import { ChakraProvider, extendTheme, theme as defaultTheme, Box, Flex } from "@chakra-ui/react";
 import type { AppProps } from "next/app";
+import Footer from "@/components/Footer"; // Import Footer
 
 // Define your custom theme and merge it with the default Chakra theme
 const customTheme = extendTheme({
@@ -28,7 +29,12 @@ function TestaAstaKurdiApp({ Component, pageProps }: AppProps) {
     <ChakraProvider theme={customTheme}>
       <UserProvider>
         <AssessmentProvider>
-          <Component {...pageProps} />
+          <Flex direction="column" minH="100vh"> {/* Flex container for full height */}
+            <Box flex="1"> {/* Main content area */}
+              <Component {...pageProps} />
+            </Box>
+            <Footer /> {/* Sticky footer at the bottom */}
+          </Flex>
         </AssessmentProvider>
       </UserProvider>
     </ChakraProvider>
