@@ -6,7 +6,7 @@ import { useUser } from '../../context/UserContext';
 import { questionsDummyData } from '@/utils/dummyQuestions';
 import QuestionMultiselect from '@/components/questions/MultipleChoiceQuestion';
 import QuestionFillInput from '@/components/questions/FillInTheBlankQuestion';
-import AssessmentNavbar from '@/components/AssessmentNavbar';
+import Navbar from '@/components/Navbar';
 
 interface AnswerType {
     [key: number]: string;
@@ -46,7 +46,7 @@ const AssessmentQuestionsPage = () => {
 
     return (
         <>
-            <AssessmentNavbar /> {/* Navbar included here */}
+            <Navbar /> {/* Navbar included here */}
             <Center minH="100vh" bg="gray.50" px={4} pt="80px"> {/* Added padding-top to account for navbar height */}
                 <Box w="full" maxW="600px" mx="auto" textAlign="center">
                     <VStack spacing={6}>
