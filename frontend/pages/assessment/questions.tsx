@@ -1,6 +1,6 @@
 // /frontend/pages/assessment/questions.tsx
-import React, { useState } from 'react';
-import { Box, VStack, Button, Center } from '@chakra-ui/react';
+import React, { useState, useRef } from 'react';
+import { Box, VStack, Button, Center, AlertDialog, AlertDialogBody, AlertDialogFooter, AlertDialogHeader, AlertDialogContent, AlertDialogOverlay } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useUser } from '../../context/UserContext';
 import { questionsDummyData } from '@/utils/dummyQuestions';
@@ -17,6 +17,8 @@ const AssessmentQuestionsPage = () => {
 
     const [answers, setAnswers] = useState<AnswerType>({});
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
+    const [isSubmitDialogOpen, setIsSubmitDialogOpen] = useState(false);
+    const cancelRef = useRef<HTMLButtonElement>(null);
 
     const currentQuestion = questionsDummyData[currentQuestionIndex];
 
@@ -31,9 +33,8 @@ const AssessmentQuestionsPage = () => {
         if (currentQuestionIndex < questionsDummyData.length - 1) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
         } else {
-            const fullSubmission = { user, answers };
-            console.log("Submission:", fullSubmission);
-            router.push('/assessment/result');
+            // Open the submit confirmation dialog
+            setIsSubmitDialogOpen(true);
         }
     };
 
@@ -41,6 +42,16 @@ const AssessmentQuestionsPage = () => {
         if (currentQuestionIndex > 0) {
             setCurrentQuestionIndex(currentQuestionIndex - 1);
         }
+    };
+
+    const handleSubmit = () => {
+        // Close the dialog and submit the answers
+        setIsSubmitDialogOpen(false);
+
+        const fullSubmission = { user, answers };
+        console.log("Submission:", fullSubmission);
+        // Simulate backend submission or move to result page
+        router.push('/assessment/result');
     };
 
     return (
@@ -71,6 +82,34 @@ const AssessmentQuestionsPage = () => {
                     </VStack>
                 </VStack>
             </Box>
+
+            {/* Submit Confirmation Dialog */}
+            <AlertDialog
+                isOpen={isSubmitDialogOpen}
+                leastDestructiveRef={cancelRef}
+                onClose={() => setIsSubmitDialogOpen(false)}
+            >
+                <AlertDialogOverlay>
+                    <AlertDialogContent>
+                        <AlertDialogHeader fontSize="lg" fontWeight="bold">
+                            Submit Answers
+                        </AlertDialogHeader>
+
+                        <AlertDialogBody>
+                            Are you sure you want to submit your answers? You won't be able to change them after submission.
+                        </AlertDialogBody>
+
+                        <AlertDialogFooter>
+                            <Button ref={cancelRef} onClick={() => setIsSubmitDialogOpen(false)}>
+                                Cancel
+                            </Button>
+                            <Button colorScheme="teal" onClick={handleSubmit} ml={3}>
+                                Submit
+                            </Button>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                </AlertDialogOverlay>
+            </AlertDialog>
         </Center>
     );
 };
