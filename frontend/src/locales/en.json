@@ -1,6 +1,38 @@
 {
-    "welcomeMessage": "Welcome to Testa Asta Kurdi",
-    "startTest": "Start Kurdish Level Test",
-    "aboutTestTitle": "About the Test",
-    "aboutTestDescription": "This test evaluates your Kurdish language proficiency."
+  "welcomeMessage": "Welcome to Testa Asta Kurdi",
+  "startTest": "Start Kurdish Level Test",
+  "aboutTestTitle": "About the Test",
+  "aboutTestDescription": "This test evaluates your Kurdish language proficiency.",
+  "assessmentForm": {
+    "heading": "Assessment Form",
+    "description": "You can either continue without providing your information or proceed with your data."
+  },
+  "userForm": {
+    "heading": "User Information",
+    "nameLabel": "Name",
+    "namePlaceholder": "Enter your name",
+    "surnameLabel": "Surname",
+    "surnamePlaceholder": "Enter your surname",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Enter your email",
+    "phoneLabel": "Phone",
+    "phonePlaceholder": "Enter your phone number",
+    "continueWithData": "Continue with Data",
+    "continueWithoutData": "Continue without Data"
+  },
+  "formError": {
+    "title": "Form Error",
+    "description": "Please fill in all fields to continue with data."
+  },
+  "formSuccess": {
+    "title": "Form Submitted",
+    "description": "We've received your details."
+  },
+  "back": "Back",
+  "next": "Next",
+  "submit": "Submit",
+  "navbar": {
+    "title": "Testa Asta Kurdi",
+    "goHome": "Go to Home"
   }
+}

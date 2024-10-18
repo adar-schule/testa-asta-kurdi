@@ -1,4 +1,3 @@
-// src/components/forms/UserForm.tsx
 import {
   Box,
   FormControl,
@@ -8,11 +7,12 @@ import {
   VStack,
   Heading,
   useToast,
-  HStack,
+  Stack, // Updated from HStack for responsive stacking
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom'; // Updated to useNavigate
 import { useUser } from "../../context/UserContext";
+import { useTranslation } from 'react-i18next'; // Import useTranslation
 
 const UserForm = () => {
   const { user, setUser } = useUser();
@@ -22,14 +22,15 @@ const UserForm = () => {
   const [phone, setPhone] = useState(user.phone);
   const toast = useToast();
   const navigate = useNavigate(); // Updated to useNavigate
+  const { t } = useTranslation(); // Use useTranslation hook
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!name || !surname || !email || !phone) {
       toast({
-        title: "Form Error",
-        description: "Please fill in all fields to continue with data.",
+        title: t('formError.title'),
+        description: t('formError.description'),
         status: "error",
         duration: 3000,
         isClosable: true,
@@ -40,8 +41,8 @@ const UserForm = () => {
     setUser({ name, surname, email, phone });
 
     toast({
-      title: "Form submitted.",
-      description: "We've received your details.",
+      title: t('formSuccess.title'),
+      description: t('formSuccess.description'),
       status: "success",
       duration: 3000,
       isClosable: true,
@@ -58,54 +59,59 @@ const UserForm = () => {
     <Box w="full" maxW="500px" mx="auto" p={4} borderRadius="md" bg="white" shadow="md">
       <VStack as="form" onSubmit={handleSubmit} spacing={4} align="stretch">
         <Heading size="lg" mb={4} textAlign="center">
-          User Information
+          {t('userForm.heading')} {/* Translated heading */}
         </Heading>
 
         <FormControl id="name">
-          <FormLabel>Name</FormLabel>
+          <FormLabel>{t('userForm.nameLabel')}</FormLabel> {/* Translated label */}
           <Input
-            placeholder="Enter your name"
+            placeholder={t('userForm.namePlaceholder')} // Translated placeholder
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
         </FormControl>
 
         <FormControl id="surname">
-          <FormLabel>Surname</FormLabel>
+          <FormLabel>{t('userForm.surnameLabel')}</FormLabel> {/* Translated label */}
           <Input
-            placeholder="Enter your surname"
+            placeholder={t('userForm.surnamePlaceholder')} // Translated placeholder
             value={surname}
             onChange={(e) => setSurname(e.target.value)}
           />
         </FormControl>
 
         <FormControl id="email">
-          <FormLabel>Email</FormLabel>
+          <FormLabel>{t('userForm.emailLabel')}</FormLabel> {/* Translated label */}
           <Input
             type="email"
-            placeholder="Enter your email"
+            placeholder={t('userForm.emailPlaceholder')} // Translated placeholder
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </FormControl>
 
         <FormControl id="phone">
-          <FormLabel>Phone</FormLabel>
+          <FormLabel>{t('userForm.phoneLabel')}</FormLabel> {/* Translated label */}
           <Input
-            placeholder="Enter your phone number"
+            placeholder={t('userForm.phonePlaceholder')} // Translated placeholder
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
           />
         </FormControl>
 
-        <HStack spacing={4} w="full">
+        {/* Use Stack component with responsive direction */}
+        <Stack
+          direction={{ base: 'column', md: 'row' }} // Column on small screens, row on larger screens
+          spacing={4}
+          w="full"
+        >
           <Button colorScheme="teal" type="submit" size="lg" w="full">
-            Continue with Data
+            {t('userForm.continueWithData')} {/* Translated button text */}
           </Button>
           <Button colorScheme="gray" size="lg" w="full" onClick={handleSkip}>
-            Continue without Data
+            {t('userForm.continueWithoutData')} {/* Translated button text */}
           </Button>
-        </HStack>
+        </Stack>
       </VStack>
     </Box>
   );

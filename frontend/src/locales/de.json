@@ -2,5 +2,37 @@
     "welcomeMessage": "Willkommen bei Testa Asta Kurdi",
     "startTest": "Kurdish Level Test starten",
     "aboutTestTitle": "Über den Test",
-    "aboutTestDescription": "Dieser Test bewertet Ihre Kurdisch-Sprachkenntnisse."
+    "aboutTestDescription": "Dieser Test bewertet Ihre Kurdisch-Sprachkenntnisse.",
+    "assessmentForm": {
+        "heading": "Bewertungsformular",
+        "description": "Sie können entweder ohne Angaben fortfahren oder mit Ihren Daten fortfahren."
+    },
+    "userForm": {
+        "heading": "Benutzerinformationen",
+        "nameLabel": "Name",
+        "namePlaceholder": "Geben Sie Ihren Namen ein",
+        "surnameLabel": "Nachname",
+        "surnamePlaceholder": "Geben Sie Ihren Nachnamen ein",
+        "emailLabel": "E-Mail",
+        "emailPlaceholder": "Geben Sie Ihre E-Mail ein",
+        "phoneLabel": "Telefon",
+        "phonePlaceholder": "Geben Sie Ihre Telefonnummer ein",
+        "continueWithData": "Weiter mit Daten",
+        "continueWithoutData": "Weiter ohne Daten"
+    },
+    "formError": {
+        "title": "Formularfehler",
+        "description": "Bitte füllen Sie alle Felder aus, um mit den Daten fortzufahren."
+    },
+    "formSuccess": {
+        "title": "Formular eingereicht",
+        "description": "Wir haben Ihre Daten erhalten."
+    },
+    "back": "Zurück",
+    "next": "Weiter",
+    "submit": "Absenden",
+    "navbar": {
+        "title": "Testa Asta Kurdi",
+        "goHome": "Zur Startseite"
+    }
 }

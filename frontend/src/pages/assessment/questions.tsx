@@ -1,4 +1,3 @@
-// src/pages/assessment/questions.tsx
 import React, { useState } from 'react';
 import { Box, VStack, Button, Center, HStack } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom'; // Updated to useNavigate
@@ -7,6 +6,7 @@ import { questionsDummyData } from '../../utils/dummyQuestions';
 import Navbar from '../../components/Navbar';
 import QuestionMultiselect from '../../components/questions/MultipleChoiceQuestion';
 import QuestionFillInput from '../../components/questions/FillInTheBlankQuestion';
+import { useTranslation } from 'react-i18next'; // Import the translation hook
 
 interface AnswerType {
     [key: number]: string;
@@ -15,6 +15,7 @@ interface AnswerType {
 const AssessmentQuestionsPage = () => {
     const { user } = useUser();
     const navigate = useNavigate(); // Updated to useNavigate
+    const { t } = useTranslation(); // Initialize translation hook
     const [answers, setAnswers] = useState<AnswerType>({});
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
 
@@ -71,12 +72,12 @@ const AssessmentQuestionsPage = () => {
                                 colorScheme="gray"
                                 isDisabled={currentQuestionIndex === 0}
                             >
-                                Back
+                                {t('back')} {/* Translated "Back" */}
                             </Button>
                             <Button onClick={handleNext} colorScheme="teal">
                                 {currentQuestionIndex === questionsDummyData.length - 1
-                                    ? 'Submit'
-                                    : 'Next'}
+                                    ? t('submit') // Translated "Submit"
+                                    : t('next')}  {/* Translated "Next" */}
                             </Button>
                         </HStack>
                     </VStack>

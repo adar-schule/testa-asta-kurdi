@@ -11,26 +11,29 @@ const LanguageSwitcher = () => {
     };
 
     return (
-        <Box position="fixed" top="16px" right="16px" zIndex="10"> {/* Stick the LanguageSwitcher to the top-right */}
+        <Box position="fixed" top="8px" right="8px" zIndex="10"> {/* Reduced padding from top and right */}
             <Menu>
                 <MenuButton
                     as={IconButton}
-                    icon={<FaGlobe />} // Globe icon for language selection
+                    icon={<FaGlobe />}
                     aria-label="Language Switcher"
-                    bg="teal.500" // Ensure it has a background that stands out from the navbar
+                    // Reduced size and padding for a smaller button
+                    bg="primary.500" // Matched color to theme
                     color="white"
-                    _hover={{ bg: "teal.600" }}
-                    _active={{ bg: "teal.600" }}
+                    _hover={{ bg: "primary.600" }}
+                    _active={{ bg: "primary.600" }}
+                    size="sm" // Smaller button size
+                    p={2} // Reduced padding inside the button
                 />
-                <MenuList>
-                    <MenuItem onClick={() => changeLanguage('en')}>
-                        English
+                <MenuList minW="80px"> {/* Adjust width of the dropdown menu */}
+                    <MenuItem fontSize="sm" onClick={() => changeLanguage('en')}>
+                        EN
                     </MenuItem>
-                    <MenuItem onClick={() => changeLanguage('de')}>
-                        German
+                    <MenuItem fontSize="sm" onClick={() => changeLanguage('de')}>
+                        DE
                     </MenuItem>
-                    <MenuItem onClick={() => changeLanguage('ku')}>
-                        Kurmanci
+                    <MenuItem fontSize="sm" onClick={() => changeLanguage('ku')}>
+                        KU
                     </MenuItem>
                 </MenuList>
             </Menu>

@@ -2,5 +2,37 @@
     "welcomeMessage": "Bi xêr hatî Testa Asta Kurdi",
     "startTest": "Dest bi Testa Asta Kurdi bikin",
     "aboutTestTitle": "Der barê Têstê",
-    "aboutTestDescription": "Ev têst qebûlkarîya zimên te ya kurdî tê piştgirî kirin."
+    "aboutTestDescription": "Ev têst qebûlkarîya zimên te ya kurdî tê piştgirî kirin.",
+    "assessmentForm": {
+        "heading": "Şekka Bihêrbirînê",
+        "description": "Hûn dikarin bê vebijarkanî berdewam bikin an bi agahiyên xwe vegerînin."
+    },
+    "userForm": {
+        "heading": "Zanyarîya Bikarhêner",
+        "nameLabel": "Nav",
+        "namePlaceholder": "Navê xwe binivîse",
+        "surnameLabel": "Paşnav",
+        "surnamePlaceholder": "Paşnavê xwe binivîse",
+        "emailLabel": "E-name",
+        "emailPlaceholder": "E-nameya xwe binivîse",
+        "phoneLabel": "Telefon",
+        "phonePlaceholder": "Hejmara telefonê binivîse",
+        "continueWithData": "Berdewamkirin bi zanyarî",
+        "continueWithoutData": "Berdewamkirin bê zanyarî"
+    },
+    "formError": {
+        "title": "Xeletiya Formê",
+        "description": "Ji kerema xwe hemû zeviyan binivîse da ku bi zanyarî re berdewam bikin."
+    },
+    "formSuccess": {
+        "title": "Form hate şandin",
+        "description": "Em agahiyên we hatine bistînin."
+    },
+    "back": "Paşve",
+    "next": "Pêşve",
+    "submit": "Şandin",
+    "navbar": {
+        "title": "Testa Asta Kurdi",
+        "goHome": "Herin Ser Sero"
+    }
 }

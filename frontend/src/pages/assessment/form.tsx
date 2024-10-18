@@ -8,11 +8,14 @@ import {
 } from '@chakra-ui/react';
 import UserForm from '../../components/forms/UserForm';
 import Navbar from '../../components/Navbar';
+import { useTranslation } from 'react-i18next'; // Import useTranslation
 
 const AssessmentFormPage = () => {
+    const { t } = useTranslation(); // Use useTranslation hook
+
     return (
         <>
-            <Navbar /> Navbar included here
+            <Navbar />
             <Center minH="100vh" bg="gray.50" px={4}>
                 <Box w="full" maxW="600px" mx="auto" px={4} textAlign="center">
                     <VStack spacing={6} w="full">
@@ -27,10 +30,10 @@ const AssessmentFormPage = () => {
                             mb={8}
                         >
                             <Heading size="2xl" mb={4}>
-                                Assessment Form
+                                {t('assessmentForm.heading')} {/* Translated text */}
                             </Heading>
                             <Text fontSize="xl" color="whiteAlpha.800">
-                                You can either continue without providing your information or proceed with your data.
+                                {t('assessmentForm.description')} {/* Translated text */}
                             </Text>
                         </Box>
 
@@ -38,7 +41,8 @@ const AssessmentFormPage = () => {
                     </VStack>
                 </Box>
             </Center>
-        </>);
+        </>
+    );
 };
 
 export default AssessmentFormPage;
