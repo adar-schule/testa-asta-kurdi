@@ -1,6 +1,14 @@
-/* Reset default margins/padding for all elements */
-* {
+html,
+body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    height: 100%;
+    /* Ensure the body takes up the full height */
+}
+
+#root {
+    min-height: 100vh;
+    /* Ensure the root div takes up full viewport height */
+    display: flex;
+    flex-direction: column;
 }

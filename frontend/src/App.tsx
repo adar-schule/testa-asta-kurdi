@@ -34,7 +34,7 @@ function App() {
           <Router>
             <Flex direction="column" minH="100vh">
               {/* Main content area */}
-              <Box flex="1">
+              <Box flex="1" px={4} py={8} bg="gray.50"> {/* Added padding for content and gray background */}
                 <Routes>
                   <Route path="/" element={<HomePage />} />
                   <Route path="/assessment/form" element={<AssessmentFormPage />} />
