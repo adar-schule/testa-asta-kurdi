@@ -8,6 +8,24 @@ import AssessmentFormPage from './pages/assessment/form';
 import AssessmentQuestionsPage from './pages/assessment/questions';
 import AssessmentResult from './pages/assessment/result';
 import Footer from './components/Footer';
+import LanguageSwitcher from './components/LanguageSwitcher'; // Import the LanguageSwitcher
+import i18n from 'i18next';
+import { I18nextProvider } from 'react-i18next';
+import en from './locales/en.json';
+import de from './locales/de.json';
+import ku from './locales/ku.json';
+
+// Initialize i18n
+i18n.init({
+  resources: {
+    en: { translation: en },
+    de: { translation: de },
+    ku: { translation: ku }
+  },
+  lng: 'en', // default language
+  fallbackLng: 'en',
+  interpolation: { escapeValue: false }
+});
 
 // Define your custom theme (if needed) or use Chakra default
 const customTheme = extendTheme({
@@ -28,28 +46,33 @@ const customTheme = extendTheme({
 
 function App() {
   return (
-    <ChakraProvider theme={customTheme}>
-      <UserProvider>
-        <AssessmentProvider>
-          <Router>
-            <Flex direction="column" minH="100vh">
-              {/* Main content area */}
-              <Box flex="1" px={4} py={8} bg="gray.50"> {/* Added padding for content and gray background */}
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/assessment/form" element={<AssessmentFormPage />} />
-                  <Route path="/assessment/questions" element={<AssessmentQuestionsPage />} />
-                  <Route path="/assessment/result" element={<AssessmentResult />} />
-                  {/* Add more routes as needed */}
-                </Routes>
-              </Box>
-              {/* Footer */}
-              <Footer />
-            </Flex>
-          </Router>
-        </AssessmentProvider>
-      </UserProvider>
-    </ChakraProvider>
+    <I18nextProvider i18n={i18n}>
+      <ChakraProvider theme={customTheme}>
+        <UserProvider>
+          <AssessmentProvider>
+            <Router>
+              <Flex direction="column" minH="100vh">
+                {/* LanguageSwitcher placed globally */}
+                <LanguageSwitcher />
+
+                {/* Main content area */}
+                <Box flex="1">
+                  <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/assessment/form" element={<AssessmentFormPage />} />
+                    <Route path="/assessment/questions" element={<AssessmentQuestionsPage />} />
+                    <Route path="/assessment/result" element={<AssessmentResult />} />
+                  </Routes>
+                </Box>
+
+                {/* Footer */}
+                <Footer />
+              </Flex>
+            </Router>
+          </AssessmentProvider>
+        </UserProvider>
+      </ChakraProvider>
+    </I18nextProvider>
   );
 }
 
