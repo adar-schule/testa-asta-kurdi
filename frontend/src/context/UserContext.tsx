@@ -1,4 +1,3 @@
-// /frontend/context/UserContext.tsx
 import { createContext, useContext, useState, ReactNode } from 'react';
 
 // Define the shape of the user data

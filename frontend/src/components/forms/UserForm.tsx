@@ -1,4 +1,4 @@
-// /frontend/components/forms/UserForm.tsx
+// src/components/forms/UserForm.tsx
 import {
   Box,
   FormControl,
@@ -11,23 +11,21 @@ import {
   HStack,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { useRouter } from "next/router";
-import { useUser } from "../../context/UserContext";  // Import the useUser hook
+import { useNavigate } from 'react-router-dom'; // Updated to useNavigate
+import { useUser } from "../../context/UserContext";
 
 const UserForm = () => {
-  const { user, setUser } = useUser();  // Access user data from context
+  const { user, setUser } = useUser();
   const [name, setName] = useState(user.name);
   const [surname, setSurname] = useState(user.surname);
   const [email, setEmail] = useState(user.email);
   const [phone, setPhone] = useState(user.phone);
   const toast = useToast();
-  const router = useRouter();
+  const navigate = useNavigate(); // Updated to useNavigate
 
-  // Form submission handler
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // If any field is empty, show a validation error
     if (!name || !surname || !email || !phone) {
       toast({
         title: "Form Error",
@@ -39,15 +37,8 @@ const UserForm = () => {
       return;
     }
 
-    // Update the context with the user's data
-    setUser({
-      name,
-      surname,
-      email,
-      phone,
-    });
+    setUser({ name, surname, email, phone });
 
-    // Display success message
     toast({
       title: "Form submitted.",
       description: "We've received your details.",
@@ -56,13 +47,11 @@ const UserForm = () => {
       isClosable: true,
     });
 
-    // Proceed to test page
-    router.push("/assessment/questions");
+    navigate("/assessment/questions"); // Use navigate to redirect
   };
 
-  // Skip form validation and go directly to the test
   const handleSkip = () => {
-    router.push("/assessment/questions");
+    navigate("/assessment/questions"); // Use navigate to skip form
   };
 
   return (
@@ -109,7 +98,6 @@ const UserForm = () => {
           />
         </FormControl>
 
-        {/* Buttons */}
         <HStack spacing={4} w="full">
           <Button colorScheme="teal" type="submit" size="lg" w="full">
             Continue with Data

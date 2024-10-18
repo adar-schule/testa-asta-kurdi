@@ -1,4 +1,3 @@
-// /frontend/components/questions/QuestionMultiselect.tsx
 import { Box, Heading, Button, VStack } from "@chakra-ui/react";
 
 interface QuestionProps {

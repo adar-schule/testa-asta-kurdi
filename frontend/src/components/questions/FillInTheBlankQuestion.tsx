@@ -1,4 +1,3 @@
-// /frontend/components/questions/QuestionFillInput.tsx
 import { Box, Heading, FormControl, Input } from "@chakra-ui/react";
 
 interface QuestionProps {

@@ -1,4 +1,3 @@
-// /frontend/context/AssessmentContext.tsx
 import { createContext, useContext, useState, ReactNode } from "react";
 
 interface Answer {

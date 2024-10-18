@@ -1,4 +1,3 @@
-// /frontend/pages/assessment/form.tsx
 import React from 'react';
 import {
     Box,
@@ -8,12 +7,12 @@ import {
     Center,
 } from '@chakra-ui/react';
 import UserForm from '../../components/forms/UserForm';
-import Navbar from '@/components/Navbar';
+import Navbar from '../../components/Navbar';
 
 const AssessmentFormPage = () => {
     return (
         <>
-            <Navbar /> {/* Navbar included here */}
+            <Navbar /> Navbar included here
             <Center minH="100vh" bg="gray.50" px={4}>
                 <Box w="full" maxW="600px" mx="auto" px={4} textAlign="center">
                     <VStack spacing={6} w="full">
