@@ -34,8 +34,6 @@ function App() {
         <AssessmentProvider>
           <Router>
             <Flex direction="column" minH="100vh">
-              {/* Navbar */}
-              <Navbar />
               {/* Main content area */}
               <Box flex="1">
                 <Routes>
