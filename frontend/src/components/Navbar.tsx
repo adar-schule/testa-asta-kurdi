@@ -1,12 +1,12 @@
-// /frontend/components/Navbar.tsx
+// src/components/Navbar.tsx
 import { Box, Flex, Button, Heading } from '@chakra-ui/react';
-import { useRouter } from 'next/router';
+import { useNavigate } from 'react-router-dom'; // Updated to useNavigate
 
 const Navbar = () => {
-    const router = useRouter();
+    const navigate = useNavigate(); // Updated to useNavigate
 
     const handleGoHome = () => {
-        router.push('/');
+        navigate('/'); // Use navigate instead of router.push
     };
 
     return (
@@ -18,7 +18,7 @@ const Navbar = () => {
                 <Button
                     bg="white"
                     color="teal.500"
-                    _hover={{ bg: 'gray.100' }} // Lighter hover effect for better visibility
+                    _hover={{ bg: 'gray.100' }}
                     onClick={handleGoHome}
                 >
                     Go to Home

@@ -1,4 +1,3 @@
-// /frontend/components/Footer.tsx
 import { Box, Text, Link } from "@chakra-ui/react";
 
 const Footer = () => {

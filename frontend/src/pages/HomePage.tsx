@@ -1,4 +1,4 @@
-// /frontend/pages/index.tsx
+// src/pages/HomePage.tsx
 import {
   Box,
   Heading,
@@ -11,26 +11,25 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { InfoIcon } from "@chakra-ui/icons";
-import { useRouter } from "next/router";
+import { useNavigate } from 'react-router-dom'; // Updated to useNavigate
 import { useEffect, useState } from "react";
 
 const HomePage = () => {
-  const router = useRouter();
+  const navigate = useNavigate(); // Updated to useNavigate
   const [message, setMessage] = useState(""); // State to hold backend response
 
-  // Use useEffect to call the backend when the component mounts
   useEffect(() => {
     const fetchData = async () => {
       try {
         const apiUrl =
-          process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001";
+          process.env.REACT_APP_API_URL || "http://localhost:5001"; // Updated to REACT_APP
         const res = await fetch(apiUrl);
         if (!res.ok) {
           throw new Error(`Error: ${res.statusText}`);
         }
 
         const data = await res.text();
-        setMessage(data); // Set the backend response
+        setMessage(data);
       } catch (err) {
         console.error("Error fetching data from backend:", err);
         setMessage("Error fetching data.");
@@ -41,8 +40,7 @@ const HomePage = () => {
   }, []);
 
   const handleStartTest = () => {
-    // Navigate to the assessment form page
-    router.push("/assessment/form");
+    navigate("/assessment/form"); // Use navigate instead of router.push
   };
 
   return (
@@ -73,13 +71,12 @@ const HomePage = () => {
             borderRadius="md"
             shadow="lg"
             mb={6}
-            maxW="100%"  // Make image fully responsive
-            maxH="300px"  // Limit height
+            maxW="100%"
+            maxH="300px"
             w="full"
-            objectFit="cover"  // Maintain aspect ratio
+            objectFit="cover"
           />
 
-          {/* About the test section */}
           <Box
             borderRadius="md"
             p={6}
@@ -87,10 +84,10 @@ const HomePage = () => {
             shadow="md"
             w="full"
             textAlign="left"
-            maxW="800px"  // Increased width for better visibility
+            maxW="800px"
           >
             <HStack spacing={3} alignItems="flex-start">
-              <Icon as={InfoIcon} w={8} h={8} color="teal.500" />  {/* Increased size for better visual impact */}
+              <Icon as={InfoIcon} w={8} h={8} color="teal.500" />
               <Text fontWeight="bold" fontSize="2xl">
                 About the Test
               </Text>
@@ -109,10 +106,10 @@ const HomePage = () => {
           <Button
             onClick={handleStartTest}
             colorScheme="teal"
-            size="lg"  // Increased button size
-            mt={4}  // Add some margin to bring the button higher up
-            w="full"  // Full-width button for better visibility
-            maxW="400px"  // Limit the width so it doesn’t stretch too much
+            size="lg"
+            mt={4}
+            w="full"
+            maxW="400px"
           >
             Start Kurdish Level Test
           </Button>
