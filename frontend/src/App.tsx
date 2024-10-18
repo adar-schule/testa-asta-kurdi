@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ChakraProvider, extendTheme, Box, Flex } from '@chakra-ui/react';
 import { UserProvider } from './context/UserContext';
 import { AssessmentProvider } from './context/AssessmentContext';
-import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import AssessmentFormPage from './pages/assessment/form';
 import AssessmentQuestionsPage from './pages/assessment/questions';
