@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "d19919f9-d3b9-477b-84a1-3edc9f8eb155",
+		"name": "Adar Schule",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31184922"
+	},
+	"item": [
+		{
+			"name": "Testa Asta Kurdî",
+			"item": [
+				{
+					"name": "Questions",
+					"item": [
+						{
+							"name": "Create a new question",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"type\": \"multiselect\",\n  \"question\": \"What is the capital of Kurdistan?\",\n  \"answers\": [\"Erbil\", \"Sulaymaniyah\", \"Duhok\", \"Kirkuk\"],\n  \"correctAnswer\": \"Erbil\",\n  \"points\": 10\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5001/questions",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"questions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all questions",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5001/questions",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"questions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get a single question by ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5001/questions/{questionId}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"questions",
+										"{questionId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a question",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"type\": \"multiselect\",\n  \"question\": \"Which city is in Kurdistan?\",\n  \"answers\": [\"Baghdad\", \"Erbil\", \"Mosul\"],\n  \"correctAnswer\": \"Erbil\",\n  \"points\": 10\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5001/questions/{questionId}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"questions",
+										"{questionId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a question",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5001/questions/{questionId}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"questions",
+										"{questionId}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
