@@ -4,18 +4,93 @@ node_modules/
 # Ignore build outputs
 dist/
 out/
+.build/
+.cache/
+coverage/
+build/
+temp/
+tmp/
 
 # Ignore logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
 # Ignore environment variables
 .env
 .env.local
-.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# Ignore lock files for npm or yarn (you can keep one of these)
+# Ignore lock files (pick one if you prefer to keep it)
 package-lock.json
 yarn.lock
+pnpm-lock.yaml
+
+# Ignore IDE settings (VSCode, WebStorm, etc.)
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore lint & formatting settings
+.eslintcache
+.prettiercache
+
+# Ignore TypeScript build outputs
+*.tsbuildinfo
+
+# Ignore bundler/webpack outputs
+.sass-cache/
+.parcel-cache/
+.next/
+.nuxt/
+.vite/
+
+# Ignore Docker files
+.docker/
+docker-compose.override.yml
+
+# Ignore test outputs
+jest/
+.cypress/
+.cypress_cache/
+*.snap
+__pycache__/
+coverage/
+
+# Ignore storybook build artifacts
+.storybook/
+storybook-static/
+
+# Ignore Git-specific files
+*.orig
+*.rej
+
+# Ignore Firebase files
+.firebase/
+.firebaserc
+
+# Ignore AWS Amplify files
+amplify/.config/local-env-info.json
+amplify/.config/local-aws-info.json
+amplify/backend/amplify-meta.json
+amplify/backend/awscloudformation/
+amplify/#current-cloud-backend/
+
+# Ignore Heroku files
+.heroku/
+
+# Ignore other tool-specific files (optional)
+.vim/
+.nyc_output/
+.pnp/
+.pnp.js
