@@ -1,7 +1,7 @@
 Testa Asta Kurdi Live @ https://testa-asta-kurdi-cda9ea8e953a.herokuapp.com/
 
 ---
-## Testa Asta Kurdi - Kurdish Language Assessment Application
+## Testa Asta Kurdî - Kurdish Language Assessment Application
 
 ### Key Features:
 1. **Frontend (FE)**:
