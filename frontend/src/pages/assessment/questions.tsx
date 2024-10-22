@@ -25,8 +25,8 @@ const AssessmentQuestionsPage = () => {
     useEffect(() => {
         const fetchQuestions = async () => {
             try {
-                const apiUrl =
-                    process.env.REACT_APP_API_URL || 'http://localhost:5001/questions'; // Adjust API URL for production
+                const apiUrl = `${process.env.REACT_APP_API_URL || 'http://localhost:5001'}/questions`;  // Always append /questions
+                console.log("API URL:", apiUrl);  // Add this to verify
                 const res = await fetch(apiUrl);
                 if (!res.ok) {
                     throw new Error(`Error: ${res.statusText}`);
