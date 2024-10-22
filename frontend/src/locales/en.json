@@ -1,4 +1,6 @@
 {
+  "noQuestions": "No questions available",
+  "loading": "loading...",
   "welcomeMessage": "Welcome to Testa Asta Kurdi",
   "startTest": "Start Kurdish Level Test",
   "aboutTestTitle": "About the Test",
