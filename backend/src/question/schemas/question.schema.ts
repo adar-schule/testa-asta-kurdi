@@ -4,7 +4,16 @@ import { Document } from 'mongoose';
 
 export type QuestionDocument = Question & Document;
 
-@Schema()
+@Schema({
+    toJSON: {
+        virtuals: true,
+        versionKey: false,  // remove __v key
+        transform: (_doc, ret) => {
+            ret.id = ret._id;  // assign _id to id
+            delete ret._id;    // delete _id from the response
+        }
+    }
+})
 export class Question {
     @ApiProperty({ example: 'multiselect', description: 'The type of question' })
     @Prop({ required: true })
@@ -15,7 +24,7 @@ export class Question {
     question: string;
 
     @ApiProperty({ example: ['Erbil', 'Sulaymaniyah', 'Duhok', 'Kirkuk'], description: 'The possible answers for multiselect questions' })
-    @Prop({ type: [String], required: false }) // Optional for fill-input type
+    @Prop({ type: [String], required: false })  // Optional for fill-input type
     answers: string[];
 
     @ApiProperty({ example: 'Erbil', description: 'The correct answer for fill-in or multiselect' })
