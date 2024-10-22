@@ -36,5 +36,12 @@
   "navbar": {
     "title": "Testa Asta Kurdi",
     "goHome": "Go to Home"
+  },
+  "assessmentSubmitModal": {
+    "title": "Confirm your answers",
+    "yourAnswer": "Your Answer",
+    "noAnswer": "No answer provided",
+    "confirm": "Confirm",
+    "cancel": "Cancel"
   }
 }

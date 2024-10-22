@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Box, VStack, Button, Center, HStack } from '@chakra-ui/react';
-import { Text } from '@chakra-ui/react';
+import { Box, VStack, Button, Center, HStack, Text, useDisclosure } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
 import Navbar from '../../components/Navbar';
-import QuestionMultiselect from '../../components/questions/MultipleChoiceQuestion';
-import QuestionFillInput from '../../components/questions/FillInTheBlankQuestion';
 import { useTranslation } from 'react-i18next';
+import ConfirmationModal from '../../components/ConfirmationModal';
+import QuestionRenderer from '../../components/questions/QuestionRenderer';
 
 interface AnswerType {
     [key: number]: string;
@@ -20,6 +19,7 @@ const AssessmentQuestionsPage = () => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
     const [questions, setQuestions] = useState<any[]>([]); // Hold the questions coming from the backend
     const [loading, setLoading] = useState<boolean>(true); // For loading state
+    const { isOpen, onOpen, onClose } = useDisclosure();
 
     // Fetch questions from the backend
     useEffect(() => {
@@ -43,7 +43,6 @@ const AssessmentQuestionsPage = () => {
         fetchQuestions();
     }, []);
 
-    // If questions array is empty or currentQuestionIndex exceeds its length, return undefined.
     const currentQuestion = questions.length > 0 ? questions[currentQuestionIndex] : null;
 
     const handleAnswerChange = (questionId: number, answer: string) => {
@@ -57,9 +56,7 @@ const AssessmentQuestionsPage = () => {
         if (currentQuestionIndex < questions.length - 1) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
         } else if (questions.length > 0) {
-            const fullSubmission = { user, answers };
-            console.log('Submission:', fullSubmission);
-            navigate('/assessment/result');
+            onOpen(); // Open confirmation modal on last question
         }
     };
 
@@ -67,6 +64,12 @@ const AssessmentQuestionsPage = () => {
         if (currentQuestionIndex > 0) {
             setCurrentQuestionIndex(currentQuestionIndex - 1);
         }
+    };
+
+    const handleSubmit = () => {
+        const fullSubmission = { user, answers };
+        console.log('Submission:', fullSubmission);
+        navigate('/assessment/result');
     };
 
     return (
@@ -81,14 +84,8 @@ const AssessmentQuestionsPage = () => {
                     ) : (
                         <VStack spacing={6}>
                             <Box minH="200px" w="full">
-                                {currentQuestion?.type === 'multiselect' ? (
-                                    <QuestionMultiselect
-                                        question={currentQuestion}
-                                        onAnswerChange={handleAnswerChange}
-                                        currentAnswer={answers[currentQuestion.id] || ''}
-                                    />
-                                ) : (
-                                    <QuestionFillInput
+                                {currentQuestion && (
+                                    <QuestionRenderer
                                         question={currentQuestion}
                                         onAnswerChange={handleAnswerChange}
                                         currentAnswer={answers[currentQuestion.id] || ''}
@@ -102,18 +99,27 @@ const AssessmentQuestionsPage = () => {
                                     colorScheme="gray"
                                     isDisabled={currentQuestionIndex === 0}
                                 >
-                                    {t('back')} {/* Translated "Back" */}
+                                    {t('back')}
                                 </Button>
                                 <Button onClick={handleNext} colorScheme="teal">
                                     {currentQuestionIndex === questions.length - 1
-                                        ? t('submit') // Translated "Submit"
-                                        : t('next')}  {/* Translated "Next" */}
+                                        ? t('submit')
+                                        : t('next')}
                                 </Button>
                             </HStack>
                         </VStack>
                     )}
                 </Box>
             </Center>
+
+            {/* Confirmation Modal */}
+            <ConfirmationModal
+                isOpen={isOpen}
+                onClose={onClose}
+                onSubmit={handleSubmit}
+                answers={answers}
+                questions={questions}
+            />
         </>
     );
 };

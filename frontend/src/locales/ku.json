@@ -36,5 +36,12 @@
     "navbar": {
         "title": "Testa Asta Kurdi",
         "goHome": "Herin Ser Sero"
+    },
+    "assessmentSubmitModal": {
+        "title": "Bersîva xwe pejirandin",
+        "yourAnswer": "Bersîva we",
+        "noAnswer": "Bersîv nehat peydan",
+        "confirm": "Pejirandin",
+        "cancel": "Betal kirin"
     }
 }
