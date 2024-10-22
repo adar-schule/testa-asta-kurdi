@@ -23,8 +23,8 @@ const HomePage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const apiUrl =
-          process.env.REACT_APP_API_URL || "http://localhost:5001"; // Updated to REACT_APP
+        const apiUrl = `${process.env.REACT_APP_API_URL || 'http://localhost:5001'}/questions`;  // Always append /questions
+        console.log("API URL:", apiUrl);  // Add this to verify
         const res = await fetch(apiUrl);
         if (!res.ok) {
           throw new Error(`Error: ${res.statusText}`);
