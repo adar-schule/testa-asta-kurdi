@@ -4,7 +4,7 @@ import QuestionFillInput from '../../components/questions/FillInTheBlankQuestion
 
 interface QuestionRendererProps {
     question: any;
-    onAnswerChange: (questionId: number, answer: string) => void;
+    onAnswerChange: (questionId: string, answer: string) => void;  // Use `string` instead of `number`
     currentAnswer: string;
 }
 

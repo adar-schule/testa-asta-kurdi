@@ -8,30 +8,28 @@ import { AssessmentResult } from '../../types/AssessmentResult';
 import Navbar from '../../components/Navbar';
 
 const AssessmentResultPage = () => {
-    const { answers } = useAssessment();
+    const { answers } = useAssessment();  // Ensure answers are fetched from context
     const { user } = useUser();
     const { t } = useTranslation();
     const [results, setResults] = useState<AssessmentResult | null>(null);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);  // Dynamically manage loading state
     const [error, setError] = useState(false); // New state for error handling
 
     useEffect(() => {
         const getResults = async () => {
             try {
-                // Prepare request payload
                 const payload = {
-                    user: user?.name || user?.surname || user?.email || user?.phone ? user : undefined,
+                    user: user?.name || user?.email ? user : undefined,  // Optional user data
                     answers,
                 };
 
-                const response = await fetchResults(payload);
+                const response = await fetchResults(payload);  // Submit the answers to backend
                 setResults(response);
-                setError(false); // No error if data is fetched successfully
+                setLoading(false);  // Set loading to false once data is fetched
             } catch (error) {
                 console.error('Error fetching results:', error);
                 setError(true); // Set error state if the request fails
-            } finally {
-                setLoading(false);
+                setLoading(false); // Stop loading if there’s an error
             }
         };
 
@@ -67,22 +65,22 @@ const AssessmentResultPage = () => {
                                                 {index + 1}. {item.question || '-'} {/* Render question or "-" */}
                                             </Text>
                                             <Text color="gray.600">
-                                                {t('assessmentSubmitModal.yourAnswer')}: {' '}
+                                                {t('assessmentResult.yourAnswer')}: {' '}
                                                 {item.yourAnswer ? (
                                                     <Text as="b" display="inline">&quot;{item.yourAnswer}&quot;</Text>
                                                 ) : (
                                                     <Text as="i" color="gray.400" display="inline">
-                                                        {t('assessmentSubmitModal.noAnswer')}
+                                                        {t('assessmentResult.noAnswer')}
                                                     </Text>
                                                 )}
                                             </Text>
                                             <Text color="gray.600">
-                                                {t('assessmentSubmitModal.correctAnswer')}: {' '}
+                                                {t('assessmentResult.correctAnswer')}: {' '}
                                                 {item.correctAnswer ? (
                                                     <Text as="b" display="inline">&quot;{item.correctAnswer}&quot;</Text>
                                                 ) : (
                                                     <Text as="i" color="gray.400" display="inline">
-                                                        {t('assessmentSubmitModal.correctAnswerNotAvailable')}
+                                                        {t('assessmentResult.correctAnswerNotAvailable')}
                                                     </Text>
                                                 )}
                                             </Text>

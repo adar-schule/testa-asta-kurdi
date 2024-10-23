@@ -1,21 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Box, VStack, Button, Center, HStack, Text, useDisclosure } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
-import { useUser } from '../../context/UserContext';
 import Navbar from '../../components/Navbar';
 import { useTranslation } from 'react-i18next';
 import ConfirmationModal from '../../components/ConfirmationModal';
 import QuestionRenderer from '../../components/questions/QuestionRenderer';
-
-interface AnswerType {
-    [key: number]: string;
-}
+import { useAssessment } from '../../context/AssessmentContext';
 
 const AssessmentQuestionsPage = () => {
-    const { user } = useUser();
     const navigate = useNavigate();
     const { t } = useTranslation();
-    const [answers, setAnswers] = useState<AnswerType>({});
+    const { answers, setAnswer } = useAssessment();  // Use context to get and set answers
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
     const [questions, setQuestions] = useState<any[]>([]); // Hold the questions coming from the backend
     const [loading, setLoading] = useState<boolean>(true); // For loading state
@@ -45,11 +40,8 @@ const AssessmentQuestionsPage = () => {
 
     const currentQuestion = questions.length > 0 ? questions[currentQuestionIndex] : null;
 
-    const handleAnswerChange = (questionId: number, answer: string) => {
-        setAnswers((prevAnswers) => ({
-            ...prevAnswers,
-            [questionId]: answer,
-        }));
+    const handleAnswerChange = (questionId: string, answer: string) => {
+        setAnswer(questionId, answer);  // Use the question ID as a string
     };
 
     const handleNext = () => {
@@ -67,9 +59,7 @@ const AssessmentQuestionsPage = () => {
     };
 
     const handleSubmit = () => {
-        const fullSubmission = { user, answers };
-        console.log('Submission:', fullSubmission);
-        navigate('/assessment/result');
+        navigate('/assessment/result');  // Navigate to the results page
     };
 
     return (

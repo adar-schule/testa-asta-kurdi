@@ -1,14 +1,14 @@
 import { Box, Heading, Button, VStack } from "@chakra-ui/react";
 
 interface QuestionProps {
-    id: number;
+    id: string;  // Change `id` to string
     question: string;
     answers: string[];
 }
 
 interface Props {
     question: QuestionProps;
-    onAnswerChange: (questionId: number, answer: string) => void;
+    onAnswerChange: (questionId: string, answer: string) => void;  // Use `string` instead of `number`
     currentAnswer: string;
 }
 
@@ -24,7 +24,7 @@ const QuestionMultiselect: React.FC<Props> = ({ question, onAnswerChange, curren
                         key={index}
                         w="full"
                         colorScheme={currentAnswer === answer ? 'teal' : 'gray'}
-                        onClick={() => onAnswerChange(question.id, answer)}
+                        onClick={() => onAnswerChange(question.id, answer)}  // `question.id` as string
                     >
                         {answer}
                     </Button>

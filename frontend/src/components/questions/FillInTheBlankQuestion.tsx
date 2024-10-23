@@ -1,13 +1,13 @@
 import { Box, Heading, FormControl, Input } from "@chakra-ui/react";
 
 interface QuestionProps {
-    id: number;
+    id: string;  // Change `id` to string
     question: string;
 }
 
 interface Props {
     question: QuestionProps;
-    onAnswerChange: (questionId: number, answer: string) => void;
+    onAnswerChange: (questionId: string, answer: string) => void;  // Use `string` instead of `number`
     currentAnswer: string;
 }
 
@@ -20,7 +20,7 @@ const QuestionFillInput: React.FC<Props> = ({ question, onAnswerChange, currentA
             <FormControl>
                 <Input
                     value={currentAnswer}
-                    onChange={(e) => onAnswerChange(question.id, e.target.value)}
+                    onChange={(e) => onAnswerChange(question.id, e.target.value)}  // `question.id` as string
                     placeholder="Your answer"
                 />
             </FormControl>
