@@ -1,14 +1,13 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 
 interface Answer {
-    questionId: number;
-    answer: string;
+    [questionId: string]: string;  // Updated to map question IDs to answers
 }
 
 interface AssessmentContextType {
-    answers: Answer[];
+    answers: Answer;
     currentQuestionIndex: number;
-    setAnswer: (answer: Answer) => void;
+    setAnswer: (questionId: string, answer: string) => void;
     goToNextQuestion: () => void;
     goToPreviousQuestion: () => void;
 }
@@ -24,15 +23,14 @@ export const useAssessment = () => {
 };
 
 export const AssessmentProvider = ({ children }: { children: ReactNode }) => {
-    const [answers, setAnswers] = useState<Answer[]>([]);
+    const [answers, setAnswers] = useState<Answer>({});
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
-    const setAnswer = (answer: Answer) => {
-        setAnswers((prevAnswers) => {
-            const updatedAnswers = [...prevAnswers];
-            updatedAnswers[currentQuestionIndex] = answer;
-            return updatedAnswers;
-        });
+    const setAnswer = (questionId: string, answer: string) => {
+        setAnswers((prevAnswers) => ({
+            ...prevAnswers,
+            [questionId]: answer,
+        }));
     };
 
     const goToNextQuestion = () => {

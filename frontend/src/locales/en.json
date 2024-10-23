@@ -43,5 +43,17 @@
     "noAnswer": "No answer provided",
     "confirm": "Confirm",
     "cancel": "Cancel"
+  },
+  "assessmentResult": {
+    "loading": "We are calculating your score and level...",
+    "error": "An error occurred while fetching your results.",
+    "title": "Your Assessment Results",
+    "description": "Here is a breakdown of your answers, points earned, and your final score.",
+    "yourAnswer": "Your Answer",
+    "correctAnswer": "Correct Answer",
+    "points": "Points",
+    "totalScore": "Total Score",
+    "level": "Your Level",
+    "noResultsAvailable": "No results are available at the moment."
   }
 }

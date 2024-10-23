@@ -1,3 +1,4 @@
+// src/question/question.service.ts
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
@@ -21,6 +22,11 @@ export class QuestionService {
 
     async findOne(id: string): Promise<Question> {
         return this.questionModel.findById(id).exec();
+    }
+
+    async findManyByIds(ids: string[]): Promise<Question[]> {
+        // Find questions where _id is in the list of ids provided
+        return this.questionModel.find({ _id: { $in: ids } }).exec();
     }
 
     async update(id: string, updateQuestionDto: CreateQuestionDto): Promise<Question> {

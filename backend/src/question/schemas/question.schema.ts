@@ -1,6 +1,7 @@
+// src/question/schemas/question.schema.ts
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ApiProperty } from '@nestjs/swagger';
-import { Document } from 'mongoose';
+import { Document, Types } from 'mongoose';
 
 export type QuestionDocument = Question & Document;
 
@@ -34,6 +35,9 @@ export class Question {
     @ApiProperty({ example: 10, description: 'Points for answering this question correctly' })
     @Prop({ required: true })
     points: number;  // Add points to evaluate the user’s score
+
+    // Adding the "id" field explicitly
+    id?: string; // Add `id` property here as an optional string
 }
 
 export const QuestionSchema = SchemaFactory.createForClass(Question);

@@ -43,5 +43,17 @@
         "noAnswer": "Keine Antwort angegeben",
         "confirm": "Bestätigen",
         "cancel": "Abbrechen"
+    },
+    "assessmentResult": {
+        "loading": "Wir berechnen Ihre Punktzahl und Ihr Niveau...",
+        "error": "Ein Fehler ist aufgetreten, während Ihre Ergebnisse abgerufen wurden.",
+        "title": "Ihre Bewertungsergebnisse",
+        "description": "Hier ist eine Aufschlüsselung Ihrer Antworten, der erzielten Punkte und Ihrer Gesamtpunktzahl.",
+        "yourAnswer": "Ihre Antwort",
+        "correctAnswer": "Richtige Antwort",
+        "points": "Punkte",
+        "totalScore": "Gesamtpunktzahl",
+        "level": "Ihr Niveau",
+        "noResultsAvailable": "Keine Ergebnisse sind derzeit verfügbar."
     }
 }

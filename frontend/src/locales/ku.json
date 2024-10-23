@@ -43,5 +43,17 @@
         "noAnswer": "Bersîv nehat peydan",
         "confirm": "Pejirandin",
         "cancel": "Betal kirin"
+    },
+    "assessmentResult": {
+        "loading": "Em hînê hêsib dikin nîvokên we û asta we...",
+        "error": "Di derbarê encamên we de çewtiyek çû ser vê ereda.",
+        "title": "Encamên piştgirîyê ya we",
+        "description": "Ev yekan bersîvên we, xala xweş hatiye kirin û hejmara tevahî ya we dipeyivin.",
+        "yourAnswer": "Bersîva te",
+        "correctAnswer": "Bersîva rast",
+        "points": "Xal",
+        "totalScore": "Tevahiya Xal",
+        "level": "Asta we",
+        "noResultsAvailable": "Encamên amade ne."
     }
 }
