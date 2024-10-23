@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Text, VStack, Heading, Center } from '@chakra-ui/react';
+import { Box, Text, VStack, Heading, Center, Divider } from '@chakra-ui/react';
 import { useAssessment } from '../../context/AssessmentContext';
 import { useUser } from '../../context/UserContext';
 import { useTranslation } from 'react-i18next';
@@ -41,7 +41,21 @@ const AssessmentResultPage = () => {
             <Navbar />  {/* Navbar always visible */}
             <Center minH="100vh" bg="gray.50" px={4} pt="80px">
                 <Box w="full" maxW="600px" mx="auto" textAlign="center">
-                    <Heading>{t('assessmentResult.title')}</Heading>
+                    <Heading mb={4}>{t('assessmentResult.title')}</Heading>
+
+                    {/* Display total score and level just after the title */}
+                    {results && (
+                        <>
+                            <Text fontSize="2xl" color="teal.600" fontWeight="bold">
+                                {t('assessmentResult.level')}: {results.level || '-'}
+                            </Text>
+                            <Text fontSize="xl" color="teal.600" mb={6}>
+                                {t('assessmentResult.totalScore')}: {results.totalScore != null ? results.totalScore : '-'}
+                            </Text>
+                            <Divider my={4} />
+                        </>
+                    )}
+
                     <Text>{t('assessmentResult.description')}</Text>
 
                     {/* If an error occurs, show a small message below the heading */}
@@ -57,12 +71,12 @@ const AssessmentResultPage = () => {
                     ) : (
                         <>
                             {/* Render results table or placeholder content */}
-                            <VStack mt={8}>
+                            <VStack mt={8} align="start">
                                 {results && results.results?.length > 0 ? (
                                     results.results.map((item, index) => (
-                                        <Box key={index} mb={4}>
+                                        <Box key={index} mb={4} w="full" p={4} borderWidth="1px" borderRadius="md" bg="white" boxShadow="sm">
                                             <Text fontWeight="bold" color="teal.500">
-                                                {index + 1}. {item.question || '-'} {/* Render question or "-" */}
+                                                {index + 1}. {item.question || '-'}
                                             </Text>
                                             <Text color="gray.600">
                                                 {t('assessmentResult.yourAnswer')}: {' '}
@@ -94,16 +108,6 @@ const AssessmentResultPage = () => {
                                         {t('assessmentResult.noResultsAvailable')}
                                     </Text>
                                 )}
-
-                                {/* Total Score and Level */}
-                                <Box mt={6}>
-                                    <Text fontSize="xl">
-                                        {t('assessmentResult.totalScore')}: {results?.totalScore != null ? results.totalScore : '-'}
-                                    </Text>
-                                    <Text fontSize="xl">
-                                        {t('assessmentResult.level')}: {results?.level || '-'}
-                                    </Text>
-                                </Box>
                             </VStack>
                         </>
                     )}

@@ -4,6 +4,9 @@ import { QuestionService } from '../question/question.service'; // Import Questi
 import { SubmitResultDto } from './dto/submit-result.dto';
 import { calculateProficiencyLevel } from '../utils/levelCalculator'; // Custom function for calculating levels
 
+/**
+ * TODO: Save the Result to MongoDB database
+ */
 @Injectable()
 export class ResultService {
     constructor(private readonly questionService: QuestionService) { }
