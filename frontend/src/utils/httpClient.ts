@@ -3,7 +3,7 @@
 import { SubmitResultPayload } from '../types/SubmitResultPayload';
 
 export const fetchResults = async (payload: SubmitResultPayload) => {
-    const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5001/results';
+    const apiUrl = `${process.env.REACT_APP_API_URL || 'http://localhost:5001'}/results`;
     const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
