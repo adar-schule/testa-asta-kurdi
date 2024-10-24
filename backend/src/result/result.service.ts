@@ -17,6 +17,11 @@ export class ResultService {
         const { answers, user } = submitResultDto;
         const questionIds = Object.keys(answers);
 
+        // If no answers, return without saving
+        if (questionIds.length === 0) {
+            return { results: [], totalScore: 0, level: '-' };
+        }
+
         // Fetch the questions using the IDs
         const questions = await this.questionService.findManyByIds(questionIds);
 
@@ -41,16 +46,19 @@ export class ResultService {
         // Determine proficiency level based on total score
         const level = calculateProficiencyLevel(totalScore);
 
-        // Create the result document
-        const resultDocument = new this.resultModel({
-            user,
-            results,
-            totalScore,
-            level,
-        });
+        // Check if results are valid before saving (avoid saving empty results)
+        if (results.length > 0 && totalScore > 0) {
+            // Create the result document
+            const resultDocument = new this.resultModel({
+                user,
+                results,
+                totalScore,
+                level,
+            });
 
-        // Save the result to MongoDB
-        await resultDocument.save();
+            // Save the result to MongoDB
+            await resultDocument.save();
+        }
 
         return { results, totalScore, level };
     }
