@@ -24,9 +24,8 @@ export class QuestionService {
         return this.questionModel.findById(id).exec();
     }
 
-    async findManyByIds(ids: string[]): Promise<Question[]> {
-        // Find questions where _id is in the list of ids provided
-        return this.questionModel.find({ _id: { $in: ids } }).exec();
+    async findManyByIds(questionIds: string[]): Promise<Question[]> {
+        return this.questionModel.find({ _id: { $in: questionIds } }).exec();
     }
 
     async update(id: string, updateQuestionDto: CreateQuestionDto): Promise<Question> {

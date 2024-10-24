@@ -1,17 +1,19 @@
-// src/result/result.service.ts
 import { Injectable } from '@nestjs/common';
-import { QuestionService } from '../question/question.service'; // Import QuestionService to fetch questions
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { QuestionService } from '../question/question.service';
 import { SubmitResultDto } from './dto/submit-result.dto';
-import { calculateProficiencyLevel } from '../utils/levelCalculator'; // Custom function for calculating levels
+import { Result } from './schemas/result.schema'; // Import Result schema
+import { calculateProficiencyLevel } from '../utils/levelCalculator';
 
-/**
- * TODO: Save the Result to MongoDB database
- */
 @Injectable()
 export class ResultService {
-    constructor(private readonly questionService: QuestionService) { }
+    constructor(
+        private readonly questionService: QuestionService,
+        @InjectModel(Result.name) private resultModel: Model<Result>, // Inject the Result model
+    ) { }
 
-    async calculateResult(submitResultDto: SubmitResultDto) {
+    async calculateResult(submitResultDto: SubmitResultDto): Promise<{ results: any[]; totalScore: number; level: string }> {
         const { answers, user } = submitResultDto;
         const questionIds = Object.keys(answers);
 
@@ -20,9 +22,7 @@ export class ResultService {
 
         // Process each question and calculate the result
         const results = questions.map((question) => {
-            const userAnswer = answers[question.id]; // "id" should now be available as part of the transformation
-
-            // TODO: Improve this logic later with multiple perspective 
+            const userAnswer = answers[question.id];
             const isCorrect = userAnswer === question.correctAnswer;
             const earnedPoints = isCorrect ? question.points : 0;
 
@@ -41,6 +41,21 @@ export class ResultService {
         // Determine proficiency level based on total score
         const level = calculateProficiencyLevel(totalScore);
 
+        // Create the result document
+        const resultDocument = new this.resultModel({
+            user,
+            results,
+            totalScore,
+            level,
+        });
+
+        // Save the result to MongoDB
+        await resultDocument.save();
+
         return { results, totalScore, level };
+    }
+
+    async getAllResults(): Promise<Result[]> {
+        return this.resultModel.find().exec(); // Return all saved results
     }
 }

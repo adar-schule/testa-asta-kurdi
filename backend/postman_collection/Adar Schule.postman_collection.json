@@ -24,7 +24,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"type\": \"multiselect\",\n  \"question\": \"What is the capital of Kurdistan?\",\n  \"answers\": [\"Erbil\", \"Sulaymaniyah\", \"Duhok\", \"Kirkuk\"],\n  \"correctAnswer\": \"Erbil\",\n  \"points\": 10\n}",
+									"raw": "{\n  \"type\": \"multiselect\",\n  \"question\": \"Çi jiyanbîna şirovî ya peyiv bikar tîne?\",\n  \"answers\": [\"welatî\", \"zimanî\", \"hunerî\", \"destan\"],\n  \"correctAnswer\": \"zimanî\",\n  \"points\": 10\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -32,12 +32,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:5001/questions",
-									"protocol": "http",
+									"raw": "{{BE_API_URL}}/questions",
 									"host": [
-										"localhost"
+										"{{BE_API_URL}}"
 									],
-									"port": "5001",
 									"path": [
 										"questions"
 									]
@@ -51,18 +49,92 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:5001/questions",
-									"protocol": "http",
+									"raw": "{{BE_API_URL}}/questions",
 									"host": [
-										"localhost"
+										"{{BE_API_URL}}"
 									],
-									"port": "5001",
 									"path": [
 										"questions"
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "Get all questions",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{BE_API_URL}}/questions",
+											"host": [
+												"{{BE_API_URL}}"
+											],
+											"path": [
+												"questions"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Server",
+											"value": "Cowboy"
+										},
+										{
+											"key": "Report-To",
+											"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1729604656&sid=812dcc77-0bd0-43b1-a5f1-b25750382959&s=GfNE%2FaH9L4L2awtnOmkHWv4feoCjdv5s9Yx1FVPFaB8%3D\"}]}"
+										},
+										{
+											"key": "Reporting-Endpoints",
+											"value": "heroku-nel=https://nel.heroku.com/reports?ts=1729604656&sid=812dcc77-0bd0-43b1-a5f1-b25750382959&s=GfNE%2FaH9L4L2awtnOmkHWv4feoCjdv5s9Yx1FVPFaB8%3D"
+										},
+										{
+											"key": "Nel",
+											"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "2033"
+										},
+										{
+											"key": "Etag",
+											"value": "W/\"7f1-3tQOASIjNllOA2OGxC9nDVINjz0\""
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 22 Oct 2024 13:44:16 GMT"
+										},
+										{
+											"key": "Via",
+											"value": "1.1 vegur"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"type\": \"multiselect\",\n        \"question\": \"Ji bo rêzê 'hunermend' çi bikar tînin?\",\n        \"answers\": [\n            \"xaniyê\",\n            \"tahmîbûn\",\n            \"hizrawî\",\n            \"çalakiya hunerî\"\n        ],\n        \"correctAnswer\": \"çalakiya hunerî\",\n        \"points\": 10,\n        \"id\": \"671797d8e588847d4ea772c6\"\n    },\n    {\n        \"type\": \"fillinput\",\n        \"question\": \"Jênerêciya Kurdî ya bilind ji şirovînê tê ___ rewşî, hêvî û berhemên hunerî.\",\n        \"answers\": [],\n        \"correctAnswer\": \"peyiv\",\n        \"points\": 10,\n        \"id\": \"671797e2e588847d4ea772c8\"\n    },\n    {\n        \"type\": \"multiselect\",\n        \"question\": \"Çi cihê Kurdistanê nûçeyên zindî di peyivên Kurdî de derket?\",\n        \"answers\": [\n            \"Hewlêr\",\n            \"Duhok\",\n            \"Kerkûk\",\n            \"Silêmanî\"\n        ],\n        \"correctAnswer\": \"Silêmanî\",\n        \"points\": 10,\n        \"id\": \"671797eee588847d4ea772ca\"\n    },\n    {\n        \"type\": \"multiselect\",\n        \"question\": \"Hin Kurdî di çar hêzên çavan de 'zanîn' bikar tîne?\",\n        \"answers\": [\n            \"zanîn\",\n            \"zanîna\",\n            \"zanînî\",\n            \"zanî\"\n        ],\n        \"correctAnswer\": \"zanîn\",\n        \"points\": 10,\n        \"id\": \"671797fee588847d4ea772cc\"\n    },\n    {\n        \"type\": \"fillinput\",\n        \"question\": \"Navê reyna lêkeran bi Kurdî tê rewandin, mînakek bide ___.\",\n        \"answers\": [],\n        \"correctAnswer\": \"meşkî\",\n        \"points\": 10,\n        \"id\": \"67179807e588847d4ea772ce\"\n    },\n    {\n        \"type\": \"multiselect\",\n        \"question\": \"Hin giringî ya peyivên ji çavkaniyê bikar tîne?\",\n        \"answers\": [\n            \"şerê\",\n            \"bîranînê\",\n            \"peyiv\",\n            \"şêwirmendî\"\n        ],\n        \"correctAnswer\": \"bîranînê\",\n        \"points\": 10,\n        \"id\": \"6717980ee588847d4ea772d0\"\n    },\n    {\n        \"type\": \"fillinput\",\n        \"question\": \"Erebî bûn wek ji bo Kurdî peyiv bi ___ hatin destpêkirin?\",\n        \"answers\": [],\n        \"correctAnswer\": \"mamoste\",\n        \"points\": 10,\n        \"id\": \"67179813e588847d4ea772d2\"\n    },\n    {\n        \"type\": \"multiselect\",\n        \"question\": \"Çi peyvê Kurmancî li ser 'peyiv' tê serbestkirin?\",\n        \"answers\": [\n            \"çav\",\n            \"hiz\",\n            \"ber\",\n            \"zor\"\n        ],\n        \"correctAnswer\": \"çav\",\n        \"points\": 10,\n        \"id\": \"67179819e588847d4ea772d4\"\n    },\n    {\n        \"type\": \"fillinput\",\n        \"question\": \"Ji peyivê 'ji bo zarokan' bi ___ destpê bikevin nivîsandin?\",\n        \"answers\": [],\n        \"correctAnswer\": \"zor\",\n        \"points\": 10,\n        \"id\": \"67179822e588847d4ea772d6\"\n    },\n    {\n        \"type\": \"multiselect\",\n        \"question\": \"Çi jiyanbîna şirovî ya peyiv bikar tîne?\",\n        \"answers\": [\n            \"welatî\",\n            \"zimanî\",\n            \"hunerî\",\n            \"destan\"\n        ],\n        \"correctAnswer\": \"zimanî\",\n        \"points\": 10,\n        \"id\": \"6717982ae588847d4ea772d8\"\n    }\n]"
+								}
+							]
 						},
 						{
 							"name": "Get a single question by ID",
@@ -70,15 +142,13 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:5001/questions/{questionId}",
-									"protocol": "http",
+									"raw": "{{BE_API_URL}}/questions/671770267fa38c7e2fe95aec",
 									"host": [
-										"localhost"
+										"{{BE_API_URL}}"
 									],
-									"port": "5001",
 									"path": [
 										"questions",
-										"{questionId}"
+										"671770267fa38c7e2fe95aec"
 									]
 								}
 							},
@@ -96,7 +166,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"type\": \"multiselect\",\n  \"question\": \"Which city is in Kurdistan?\",\n  \"answers\": [\"Baghdad\", \"Erbil\", \"Mosul\"],\n  \"correctAnswer\": \"Erbil\",\n  \"points\": 10\n}",
+									"raw": "{\n  \"type\": \"multiselect\",\n  \"question\": \"Which city is in Kurdistan??\",\n  \"answers\": [\"Baghdad\", \"Erbil\", \"Mosul\", \"Ararat\"],\n  \"correctAnswer\": \"Erbil\",\n  \"points\": 10\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -104,15 +174,13 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:5001/questions/{questionId}",
-									"protocol": "http",
+									"raw": "{{BE_API_URL}}/questions/671770267fa38c7e2fe95aec",
 									"host": [
-										"localhost"
+										"{{BE_API_URL}}"
 									],
-									"port": "5001",
 									"path": [
 										"questions",
-										"{questionId}"
+										"671770267fa38c7e2fe95aec"
 									]
 								}
 							},
@@ -124,15 +192,35 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:5001/questions/{questionId}",
-									"protocol": "http",
+									"raw": "{{BE_API_URL}}/questions/671770267fa38c7e2fe95aec",
 									"host": [
-										"localhost"
+										"{{BE_API_URL}}"
 									],
-									"port": "5001",
 									"path": [
 										"questions",
-										"{questionId}"
+										"671770267fa38c7e2fe95aec"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Results",
+					"item": [
+						{
+							"name": "Get All Results",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BE_API_URL}}/results",
+									"host": [
+										"{{BE_API_URL}}"
+									],
+									"path": [
+										"results"
 									]
 								}
 							},
