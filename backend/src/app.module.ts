@@ -5,6 +5,8 @@ import { QuestionModule } from './question/question.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ResultModule } from './result/result.module';
+import { AuthModule } from './auth/auth.module';
+import { ManagementModule } from './management/management.module';
 
 @Module({
   imports: [
@@ -18,6 +20,8 @@ import { ResultModule } from './result/result.module';
     }),
     QuestionModule,
     ResultModule,
+    AuthModule,
+    ManagementModule
   ],
   controllers: [AppController],
   providers: [AppService],
