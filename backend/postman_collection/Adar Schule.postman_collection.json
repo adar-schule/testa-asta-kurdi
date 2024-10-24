@@ -142,13 +142,13 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{BE_API_URL}}/questions/671770267fa38c7e2fe95aec",
+									"raw": "{{BE_API_URL}}/questions/671797d8e588847d4ea772c6",
 									"host": [
 										"{{BE_API_URL}}"
 									],
 									"path": [
 										"questions",
-										"671770267fa38c7e2fe95aec"
+										"671797d8e588847d4ea772c6"
 									]
 								}
 							},
@@ -174,13 +174,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{BE_API_URL}}/questions/671770267fa38c7e2fe95aec",
+									"raw": "{{BE_API_URL}}/questions/671797d8e588847d4ea772c6",
 									"host": [
 										"{{BE_API_URL}}"
 									],
 									"path": [
 										"questions",
-										"671770267fa38c7e2fe95aec"
+										"671797d8e588847d4ea772c6"
 									]
 								}
 							},
@@ -192,13 +192,13 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{BE_API_URL}}/questions/671770267fa38c7e2fe95aec",
+									"raw": "{{BE_API_URL}}/questions/671a6f43c81ca7b06d05eaca",
 									"host": [
 										"{{BE_API_URL}}"
 									],
 									"path": [
 										"questions",
-										"671770267fa38c7e2fe95aec"
+										"671a6f43c81ca7b06d05eaca"
 									]
 								}
 							},
@@ -243,7 +243,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"username\": \"nuriengin\",\n    \"password\": \"supersecretpassword1234\",\n    \"role\": \"Admin\"\n}",
+									"raw": "{\n    \"username\": \"AuditorAccount3\",\n    \"password\": \"auditor12345678\",\n    \"role\": \"Auditor\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -340,6 +340,9 @@
 						{
 							"name": "Login",
 							"request": {
+								"auth": {
+									"type": "noauth"
+								},
 								"method": "POST",
 								"header": [
 									{
@@ -349,7 +352,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"username\": \"nuriengin\",\n    \"password\": \"supersecretpassword1234\"\n}",
+									"raw": "// {\n//     \"username\": \"AuditorAccount2\",\n//     \"password\": \"auditor12345678\"\n// }\n{\n    \"username\": \"adminUser\",\n    \"password\": \"adminPassword123\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -370,6 +373,38 @@
 							"response": []
 						}
 					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluVXNlciIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyOTc4NTc4NiwiZXhwIjoxNzI5Nzg5Mzg2fQ.7GPc6VJPunKylYfEG1WGLnL6-NwY8G5I-3aSriVsTsc",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		}

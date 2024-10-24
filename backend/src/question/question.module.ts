@@ -1,15 +1,17 @@
 import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';  // Comment out Mongoose integration
+import { MongooseModule } from '@nestjs/mongoose';
 import { QuestionService } from './question.service';
 import { QuestionController } from './question.controller';
-import { Question, QuestionSchema } from './schemas/question.schema';  // Comment out the schema
+import { Question, QuestionSchema } from './schemas/question.schema';
+import { AuthModule } from '../auth/auth.module'; // Import AuthModule to provide JwtService
 
 @Module({
     imports: [
-        MongooseModule.forFeature([{ name: Question.name, schema: QuestionSchema }]),  // Comment out Mongoose schema
+        MongooseModule.forFeature([{ name: Question.name, schema: QuestionSchema }]),
+        AuthModule, // Add AuthModule to import JwtService
     ],
     controllers: [QuestionController],
     providers: [QuestionService],
-    exports: [QuestionService],  // Add QuestionService to exports to make it available for other modules
+    exports: [QuestionService], // Ensure QuestionService is exported if needed by other modules
 })
 export class QuestionModule { }

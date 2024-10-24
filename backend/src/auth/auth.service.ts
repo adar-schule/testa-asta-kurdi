@@ -13,14 +13,18 @@ export class AuthService {
     async validateUser(username: string, pass: string): Promise<any> {
         const user = await this.managementService.findByUsername(username);
         if (user && await bcrypt.compare(pass, user.password)) {
-            const { password, ...result } = user;
-            return result;
+            // Instead of just removing the password, pass the whole user object.
+            return {
+                username: user.username,
+                role: user.role,  // Ensure role is returned here
+            };
         }
         throw new UnauthorizedException('Invalid credentials');
     }
 
     async login(user: any) {
         const payload = { username: user.username, role: user.role };
+        console.log('JWT Payload:', payload);  // Log to see the payload
         return {
             access_token: this.jwtService.sign(payload),
         };
