@@ -15,6 +15,16 @@ export class ManagementService {
         return this.managementModel.findOne({ username }).exec();
     }
 
+    // Find a management user by ID
+    async findById(id: string): Promise<Management> {
+        return this.managementModel.findById(id).exec();
+    }
+
+    // Fetch all management users
+    async findAll(): Promise<Management[]> {
+        return this.managementModel.find().exec();
+    }
+
     // Generic function to create an admin or auditor
     async create(username: string, password: string, role: string): Promise<Management> {
         const hashedPassword = await bcrypt.hash(password, 10);

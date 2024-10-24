@@ -17,11 +17,26 @@ export class ManagementController {
         return this.managementService.create(username, password, role);
     }
 
+    @ApiOperation({ summary: 'Get all management users' })
+    @ApiResponse({ status: 200, description: 'List of all management users.', type: [Management] })
+    @Get()
+    async findAll(): Promise<Management[]> {
+        return this.managementService.findAll();
+    }
+
     @ApiOperation({ summary: 'Get management user by username' })
     @ApiParam({ name: 'username', description: 'The username of the management user' })
     @ApiResponse({ status: 200, description: 'Management user found.', type: Management })
-    @Get(':username')
+    @Get('username/:username')
     async findOne(@Param('username') username: string): Promise<Management> {
         return this.managementService.findByUsername(username);
+    }
+
+    @ApiOperation({ summary: 'Get management user by ID' })
+    @ApiParam({ name: 'id', description: 'The ID of the management user' })
+    @ApiResponse({ status: 200, description: 'Management user found.', type: Management })
+    @Get(':id')
+    async findById(@Param('id') id: string): Promise<Management> {
+        return this.managementService.findById(id);
     }
 }

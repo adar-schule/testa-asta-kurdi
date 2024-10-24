@@ -227,6 +227,149 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "Managements",
+					"item": [
+						{
+							"name": "Create Management",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"nuriengin\",\n    \"password\": \"supersecretpassword1234\",\n    \"role\": \"Admin\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BE_API_URL}}/management/create",
+									"host": [
+										"{{BE_API_URL}}"
+									],
+									"path": [
+										"management",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Users",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{BE_API_URL}}/management",
+									"host": [
+										"{{BE_API_URL}}"
+									],
+									"path": [
+										"management"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get by ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{BE_API_URL}}/management/671a62313537eeb526e0eb5a",
+									"host": [
+										"{{BE_API_URL}}"
+									],
+									"path": [
+										"management",
+										"671a62313537eeb526e0eb5a"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get by Username",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{BE_API_URL}}/management/username/nuriengin",
+									"host": [
+										"{{BE_API_URL}}"
+									],
+									"path": [
+										"management",
+										"username",
+										"nuriengin"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"nuriengin\",\n    \"password\": \"supersecretpassword1234\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BE_API_URL}}/auth/login",
+									"host": [
+										"{{BE_API_URL}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		}
